@@ -8,16 +8,39 @@ const data = {
   datasets: [
     {
       label: "First dataset",
-      data: [33, 53, 85, 41, 44, 65],
-      fill: true,
-      backgroundColor: "rgba(75,192,192,0.2)",
-      borderColor: "rgba(75,192,192,1)"
+      data: [
+        { x: "Today", y: 70, status: "A" },
+        { x: "2022", y: 65, status: "B" },
+        { x: "2024", y: 60, status: "C" },
+        { x: "2026", y: 50, status: "D" },
+        { x: "2028", y: 35, status: "E" },
+        { x: "2030", y: 15, status: "F" }
+      ],
+      fill: false,
+      backgroundColor: "transparent",
+      borderColor: "#17357a",
+      pointRadius: 5,
+      pointBackgroundColor: "white",
+      pointBorderColor: "black",
+      tension: 0.4
     },
     {
       label: "Second dataset",
-      data: [33, 25, 35, 51, 54, 76],
-      fill: false,
-      borderColor: "#742774"
+      data: [
+        { x: "Today", y: 60, status: "G" },
+        { x: "2022", y: 50, status: "H" },
+        { x: "2024", y: 40, status: "I" },
+        { x: "2026", y: 30, status: "J" },
+        { x: "2028", y: 20, status: "K" },
+        { x: "2030", y: 10, status: "     L" }
+      ],
+      fill: true,
+      backgroundColor: "#dcdee0",
+      borderColor: "#dcdee0",
+      pointRadius: 5,
+      pointBackgroundColor: "white",
+      pointBorderColor: "black",
+      tension: 0.4
     }
   ]
 };
