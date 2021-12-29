@@ -1,0 +1,49 @@
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  margin: auto;
+
+  .title1 {
+    margin-bottom: 50px;
+  }
+
+  .content {
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    // border: 1px solid red;
+  
+    .buttons {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    padding: 30px;
+    // border: 1px solid red;
+  
+    &__btn {
+    margin-bottom: 15px;
+    border: 1px solid gray;
+    padding: 20px;
+    border-radius: 5px;
+    }
+  
+    &__btn:hover {
+      background-color: #17357a;
+      color: white;
+    }
+   }
+   .chart {
+    width: 90%;
+    height: 100%;
+    // border: 1px solid green;
+  }
+  }
+}
+
+
+
