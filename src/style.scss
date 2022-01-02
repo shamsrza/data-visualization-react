@@ -4,8 +4,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  //padding: 80px;
-  margin: auto;
+  padding-top: 50px;
+  margin: 0 auto;
   //border: 1px solid red;
 
   .title1 {
@@ -13,7 +13,7 @@
   }
 
   .content {
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -45,10 +45,16 @@
     //border: 1px solid green;
   }
   }
+
+  .data-table {
+    width: 100%;
+    margin: 70px 0;
+    //border: 1px solid green;
+  }
 }
 
 
-table {
+.table {
   width: 100%;
   border-collapse: collapse;
 }
