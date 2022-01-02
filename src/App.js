@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.scss";
 
 import { Line } from "react-chartjs-2";
@@ -17,12 +18,12 @@ const data = {
         { x: "2030", y: 15, status: "F" }
       ],
       fill: false,
-      backgroundColor: "transparent",
-      borderColor: "#17357a",
       pointRadius: 5,
       pointBackgroundColor: "white",
       pointBorderColor: "black",
-      tension: 0.4
+      tension: 0.4,
+      backgroundColor: "transparent",
+      borderColor: "#17357a"
     },
     {
       label: "Second dataset",
@@ -35,32 +36,198 @@ const data = {
         { x: "2030", y: 10, status: "     L" }
       ],
       fill: true,
-      backgroundColor: "#dcdee0",
-      borderColor: "#dcdee0",
       pointRadius: 5,
       pointBackgroundColor: "white",
       pointBorderColor: "black",
-      tension: 0.4
+      tension: 0.4,
+      backgroundColor: "#dcdee0",
+      borderColor: "#dcdee0"
     }
   ]
 };
 
 export default function App() {
+  const [lineData, setLineData] = useState([]);
+
+  const updateChartOne = () => {
+    setLineData(
+      (data.datasets = [
+        {
+          label: "First dataset",
+          data: [
+            { x: "Today", y: 70, status: "A" },
+            { x: "2022", y: 65, status: "B" },
+            { x: "2024", y: 60, status: "C" },
+            { x: "2026", y: 50, status: "D" },
+            { x: "2028", y: 35, status: "E" },
+            { x: "2030", y: 15, status: "F" }
+          ],
+          fill: false,
+          pointRadius: 5,
+          pointBackgroundColor: "white",
+          pointBorderColor: "black",
+          tension: 0.4,
+          backgroundColor: "transparent",
+          borderColor: "#17357a"
+        },
+        {
+          label: "Second dataset",
+          data: [
+            { x: "Today", y: 60, status: "G" },
+            { x: "2022", y: 50, status: "H" },
+            { x: "2024", y: 40, status: "I" },
+            { x: "2026", y: 30, status: "J" },
+            { x: "2028", y: 20, status: "K" },
+            { x: "2030", y: 10, status: "     L" }
+          ],
+          fill: true,
+          pointRadius: 5,
+          pointBackgroundColor: "white",
+          pointBorderColor: "black",
+          tension: 0.4,
+          backgroundColor: "#dcdee0",
+          borderColor: "#dcdee0"
+        }
+      ])
+    );
+  };
+
+  const updateChartTwo = () => {
+    setLineData(
+      (data.datasets = [
+        {
+          label: "First dataset",
+          data: [
+            { x: "Today", y: 60, status: "A" },
+            { x: "2022", y: 55, status: "B" },
+            { x: "2024", y: 50, status: "C" },
+            { x: "2026", y: 40, status: "D" },
+            { x: "2028", y: 25, status: "E" },
+            { x: "2030", y: 5, status: "F" }
+          ],
+          fill: false,
+          pointRadius: 5,
+          pointBackgroundColor: "white",
+          pointBorderColor: "black",
+          tension: 0.4,
+          backgroundColor: "transparent",
+          borderColor: "#17357a"
+        },
+        {
+          label: "Second dataset",
+          data: [
+            { x: "Today", y: 50, status: "G" },
+            { x: "2022", y: 40, status: "H" },
+            { x: "2024", y: 30, status: "I" },
+            { x: "2026", y: 20, status: "J" },
+            { x: "2028", y: 10, status: "K" },
+            { x: "2030", y: 0, status: "     L" }
+          ],
+          fill: true,
+          pointRadius: 5,
+          pointBackgroundColor: "white",
+          pointBorderColor: "black",
+          tension: 0.4,
+          backgroundColor: "#dcdee0",
+          borderColor: "#dcdee0"
+        }
+      ])
+    );
+    console.log(data.datasets);
+  };
+
+  const updateChartThree = () => {
+    setLineData(
+      (data.datasets = [
+        {
+          label: "First dataset",
+          data: [
+            { x: "Today", y: 60, status: "A" },
+            { x: "2022", y: 45, status: "B" },
+            { x: "2024", y: 10, status: "C" },
+            { x: "2026", y: 20, status: "D" },
+            { x: "2028", y: 40, status: "E" },
+            { x: "2030", y: 50, status: "F" }
+          ],
+          fill: false,
+          pointRadius: 5,
+          pointBackgroundColor: "white",
+          pointBorderColor: "black",
+          tension: 0.4,
+          backgroundColor: "transparent",
+          borderColor: "#17357a"
+        },
+        {
+          label: "Second dataset",
+          data: [
+            { x: "Today", y: 10, status: "G" },
+            { x: "2022", y: 30, status: "H" },
+            { x: "2024", y: 45, status: "I" },
+            { x: "2026", y: 55, status: "J" },
+            { x: "2028", y: 15, status: "K" },
+            { x: "2030", y: 25, status: "L" }
+          ],
+          fill: true,
+          pointRadius: 5,
+          pointBackgroundColor: "white",
+          pointBorderColor: "black",
+          tension: 0.4,
+          backgroundColor: "#dcdee0",
+          borderColor: "#dcdee0"
+        }
+      ])
+    );
+    console.log(data.datasets);
+  };
   return (
     <div className="container">
       <div className="data-graph">
         <h1 class="title1">Visualization</h1>
         <div className="content">
           <div className="buttons">
-            <button className="buttons__btn">1</button>
-            <button className="buttons__btn">2</button>
-            <button className="buttons__btn">3</button>
+            <button className="buttons__btn" onClick={updateChartOne}>
+              1
+            </button>
+            <button className="buttons__btn" onClick={updateChartTwo}>
+              2
+            </button>
+            <button className="buttons__btn" onClick={updateChartThree}>
+              3
+            </button>
           </div>
           <div className="chart">
             <Line
               data={data}
               width={"100%"}
-              options={{ maintainAspectRatio: false, responsive: true }}
+              height={"100%"}
+              options={{
+                maintainAspectRatio: false,
+                responsive: true,
+                scales: {
+                  yAxes: [
+                    {
+                      gridLines: {
+                        display: false
+                      },
+                      ticks: {
+                        beginAtZero: true,
+                        drawOnChartArea: false
+                      }
+                    }
+                  ],
+                  xAxes: [
+                    {
+                      gridLines: {
+                        display: false
+                      },
+                      ticks: {
+                        beginAtZero: true,
+                        drawOnChartArea: false
+                      }
+                    }
+                  ]
+                }
+              }}
             />
           </div>
         </div>
