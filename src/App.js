@@ -232,9 +232,9 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div class="data-table">
-        <h1 class="title2">Data</h1>
-        <table class="table noborder" id="table">
+      <div className="data-table">
+        <h1 className="title2">Data</h1>
+        <table className="table noborder" id="table">
           <thead>
             <tr>
               <th scope="col"></th>
