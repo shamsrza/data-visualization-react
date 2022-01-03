@@ -179,10 +179,11 @@ export default function App() {
     );
     console.log(data.datasets);
   };
+
   return (
     <div className="container">
       <div className="data-graph">
-        <h1 class="title1">Visualization</h1>
+        <h1 className="title1">Visualization</h1>
         <div className="content">
           <div className="buttons">
             <button className="buttons__btn" onClick={updateChartOne}>
@@ -197,6 +198,7 @@ export default function App() {
           </div>
           <div className="chart">
             <Line
+              //ref="chart"
               data={data}
               width={"100%"}
               height={"100%"}
@@ -211,7 +213,8 @@ export default function App() {
                       },
                       ticks: {
                         beginAtZero: true,
-                        drawOnChartArea: false
+                        drawOnChartArea: false,
+                        fontColor: "black"
                       }
                     }
                   ],
@@ -226,8 +229,66 @@ export default function App() {
                       }
                     }
                   ]
+                },
+                legend: {
+                  display: false
+                },
+                plugins: {
+                  datalabels: {
+                    display: true,
+                    formatter: (value) => {
+                      return value.status;
+                    }
+                  }
                 }
               }}
+              // plugins={
+              //   [
+              //     {
+              //       id: "legendMargin",
+              //       beforeInit(chart, legend, options) {
+              //         console.log(chart.legend.fit);
+              //         const fitValue = chart.legend.fit;
+              //         chart.legend.fit = function fit() {
+              //           fitValue.bind(chart.legend)();
+              //           return (this.height += 30);
+              //         };
+              //       }
+              //     },
+
+              //     {
+              //       id: "lineDataLabels",
+              //       afterDatasetsDraw(chart, args, options) {
+              //         const {ctx} = chart;
+              //         ctx.save();
+              //         ctx.font = "18px sans-serif";
+              //         ctx.fillText(chart.config.data.datasets[0].data[0].status, 100, 100);
+              //         console.log(chart.config.data.datasets[0].data[0].status);
+              //         for (let x = 0; x < chart.data.datasets.length; x++)
+              //         {
+              //           for (
+              //             let i = 0;
+              //             i < chart.data.datasets[x].data.length;
+              //             i++
+              //           ) {
+              //             //text lenth/width
+              //             const textWidth = ctx.measureText(
+              //               chart.data.datasets[x].data[i].status
+              //             ).width;
+              //             //console.log(textWidth/2)
+              //             ctx.fillText(
+              //               chart.data.datasets[x].data[i].status,
+              //               chart.getDatasetMeta(x).data[i].x - textWidth / 2,
+              //               chart.getDatasetMeta(x).data[i].y - 14
+              //             );
+              //             console.log(chart.getDatasetMeta(x).data[i].y)
+              //           }
+              //         }
+              //         ctx.restore();
+              //       }
+              //     }
+              //   ]
+              // }
             />
           </div>
         </div>
