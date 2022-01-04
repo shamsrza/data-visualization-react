@@ -78,7 +78,7 @@ export default function App() {
             { x: "2024", y: 40, status: "I" },
             { x: "2026", y: 30, status: "J" },
             { x: "2028", y: 20, status: "K" },
-            { x: "2030", y: 10, status: "     L" }
+            { x: "2030", y: 10, status: "L" }
           ],
           fill: true,
           pointRadius: 5,
@@ -121,7 +121,7 @@ export default function App() {
             { x: "2024", y: 30, status: "I" },
             { x: "2026", y: 20, status: "J" },
             { x: "2028", y: 10, status: "K" },
-            { x: "2030", y: 0, status: "     L" }
+            { x: "2030", y: 0, status: "L" }
           ],
           fill: true,
           pointRadius: 5,
@@ -197,12 +197,18 @@ export default function App() {
             </button>
           </div>
           <div className="chart">
+            {/* <canvas id="myChart"></canvas> */}
             <Line
-              //ref="chart"
+              id="myChart"
               data={data}
               width={"100%"}
               height={"100%"}
               options={{
+                layout: {
+                  padding: {
+                    top: 50
+                  }
+                },
                 maintainAspectRatio: false,
                 responsive: true,
                 scales: {
@@ -232,63 +238,55 @@ export default function App() {
                 },
                 legend: {
                   display: false
-                },
-                plugins: {
-                  datalabels: {
-                    display: true,
-                    formatter: (value) => {
-                      return value.status;
-                    }
-                  }
                 }
               }}
-              // plugins={
-              //   [
-              //     {
-              //       id: "legendMargin",
-              //       beforeInit(chart, legend, options) {
-              //         console.log(chart.legend.fit);
-              //         const fitValue = chart.legend.fit;
-              //         chart.legend.fit = function fit() {
-              //           fitValue.bind(chart.legend)();
-              //           return (this.height += 30);
-              //         };
-              //       }
-              //     },
+              plugins={[
+                //     {
+                //       id: "legendMargin",
+                //       beforeInit(chart, legend, options) {
+                //         console.log(chart.legend.fit);
+                //         const fitValue = chart.legend.fit;
+                //         chart.legend.fit = function fit() {
+                //           fitValue.bind(chart.legend)();
+                //           return (this.height += 30);
+                //         };
+                //       }
+                //     },
 
-              //     {
-              //       id: "lineDataLabels",
-              //       afterDatasetsDraw(chart, args, options) {
-              //         const {ctx} = chart;
-              //         ctx.save();
-              //         ctx.font = "18px sans-serif";
-              //         ctx.fillText(chart.config.data.datasets[0].data[0].status, 100, 100);
-              //         console.log(chart.config.data.datasets[0].data[0].status);
-              //         for (let x = 0; x < chart.data.datasets.length; x++)
-              //         {
-              //           for (
-              //             let i = 0;
-              //             i < chart.data.datasets[x].data.length;
-              //             i++
-              //           ) {
-              //             //text lenth/width
-              //             const textWidth = ctx.measureText(
-              //               chart.data.datasets[x].data[i].status
-              //             ).width;
-              //             //console.log(textWidth/2)
-              //             ctx.fillText(
-              //               chart.data.datasets[x].data[i].status,
-              //               chart.getDatasetMeta(x).data[i].x - textWidth / 2,
-              //               chart.getDatasetMeta(x).data[i].y - 14
-              //             );
-              //             console.log(chart.getDatasetMeta(x).data[i].y)
-              //           }
-              //         }
-              //         ctx.restore();
-              //       }
-              //     }
-              //   ]
-              // }
+                {
+                  id: "lineDataLabels",
+                  afterDatasetsDraw(chart, args, options) {
+                    const { ctx } = chart;
+                    ctx.save();
+                    ctx.font = "18px Arial sans-serif";
+                    ctx.fillStyle = "black";
+
+                    for (let x = 0; x < chart.data.datasets.length; x++) {
+                      for (
+                        let i = 0;
+                        i < chart.data.datasets[x].data.length;
+                        i++
+                      ) {
+                        //text lenth/width
+                        const textWidth = ctx.measureText(
+                          chart.data.datasets[x].data[i].status
+                        ).width;
+
+                        ctx.fillText(
+                          chart.data.datasets[x].data[i].status,
+                          chart.getDatasetMeta(x).data[i]._model.x -
+                            textWidth / 2,
+                          chart.getDatasetMeta(x).data[i]._model.y - 14
+                        );
+                      }
+                    }
+
+                    console.log(ctx);
+
+                    ctx.restore();
+                  }
+                }
+              ]}
             />
           </div>
         </div>
