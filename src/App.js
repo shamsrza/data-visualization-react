@@ -133,7 +133,7 @@ export default function App() {
         }
       ])
     );
-    console.log(data.datasets);
+    //console.log(data.datasets);
   };
 
   const updateChartThree = () => {
@@ -177,7 +177,7 @@ export default function App() {
         }
       ])
     );
-    console.log(data.datasets);
+    //console.log(data.datasets);
   };
 
   return (
@@ -197,7 +197,6 @@ export default function App() {
             </button>
           </div>
           <div className="chart">
-            {/* <canvas id="myChart"></canvas> */}
             <Line
               id="myChart"
               data={data}
@@ -276,12 +275,10 @@ export default function App() {
                           chart.data.datasets[x].data[i].status,
                           chart.getDatasetMeta(x).data[i]._model.x -
                             textWidth / 2,
-                          chart.getDatasetMeta(x).data[i]._model.y - 14
+                          chart.getDatasetMeta(x).data[i]._model.y - 10
                         );
                       }
                     }
-
-                    console.log(ctx);
 
                     ctx.restore();
                   }
